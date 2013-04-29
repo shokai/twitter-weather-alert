@@ -16,7 +16,7 @@ if args.has_option? :help
   STDERR.puts args.help
   STDERR.puts
   STDERR.puts "e.g."
-  STDERR.puts "  % #{$0} -twitter shokai -location 藤沢"
+  STDERR.puts "  % #{$0} -twitter shokai -location 東京"
   exit 1
 end
 
