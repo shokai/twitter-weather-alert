@@ -7,7 +7,7 @@ Bundler.require
 args = ArgsParser.parse ARGV do
   arg :twitter, 'twitter username'
   arg :prefix, 'tweet prefix'
-  arg :location, '地域'
+  arg :city, '地域'
   arg :rain, '降水確率のしきい値', :default => 40
   arg :help, 'show help', :alias => :h
 end
@@ -16,13 +16,13 @@ if args.has_option? :help
   STDERR.puts args.help
   STDERR.puts
   STDERR.puts "e.g."
-  STDERR.puts "  % #{$0} -twitter shokai -location 東京"
+  STDERR.puts "  % #{$0} -twitter shokai -city 東京"
   exit 1
 end
 
 tw = Tw::Client.new
 tw.auth args[:twitter]
-weather = WeatherJp.get args[:location]
+weather = WeatherJp.get args[:city]
 if weather.today.rain.to_i < args[:rain]
   puts weather.today
 else
