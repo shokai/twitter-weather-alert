@@ -23,7 +23,7 @@ end
 tw = Tw::Client.new
 tw.auth args[:twitter]
 weather = WeatherJp.get args[:city]
-if weather.today.rain.to_i < args[:rain]
+if weather.today.rain < args[:rain]
   puts weather.today
 else
   tw.tweet "#{args[:prefix]} #{weather.today}".strip
